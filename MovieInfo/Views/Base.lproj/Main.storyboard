@@ -64,6 +64,11 @@
                                                 <constraint firstItem="6xU-kX-Teh" firstAttribute="top" secondItem="QBI-oU-nGP" secondAttribute="top" id="ojJ-Ce-aAX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieDescription" destination="WKu-XZ-yj2" id="HHG-HU-Bcl"/>
+                                            <outlet property="movieImage" destination="QBI-oU-nGP" id="tSh-9k-H61"/>
+                                            <outlet property="movieName" destination="rHa-8E-Kx7" id="acl-4m-aUb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -78,7 +83,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="영화목록" id="0Bw-bw-TId">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DFL-uR-r2I"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DFL-uR-r2I">
+                            <connections>
+                                <action selector="addMovieDataBtn:" destination="BYZ-38-t0r" id="CDO-qw-gbw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableVIew" destination="26o-L3-4RX" id="jYf-le-RMo"/>
@@ -133,7 +142,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlS-K3-COn">
-                                <rect key="frame" x="20" y="861" width="374" height="31"/>
+                                <rect key="frame" x="20" y="801" width="374" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="EDIT"/>
                             </button>
@@ -153,7 +162,7 @@
                             <constraint firstItem="RTZ-iS-1Gs" firstAttribute="top" secondItem="awR-TJ-Wzk" secondAttribute="bottom" constant="30" id="VP0-A4-YP5"/>
                             <constraint firstItem="awR-TJ-Wzk" firstAttribute="top" secondItem="7pt-2q-zC4" secondAttribute="bottom" constant="30" id="WFQ-eC-agf"/>
                             <constraint firstItem="lyh-Cb-reX" firstAttribute="centerX" secondItem="Kca-uI-N6m" secondAttribute="centerX" id="amx-rG-VUa"/>
-                            <constraint firstItem="SlS-K3-COn" firstAttribute="bottom" secondItem="whj-TD-wqc" secondAttribute="bottom" constant="30" id="bcv-mQ-fo0"/>
+                            <constraint firstItem="SlS-K3-COn" firstAttribute="bottom" secondItem="whj-TD-wqc" secondAttribute="bottom" constant="-30" id="bcv-mQ-fo0"/>
                             <constraint firstItem="P8Z-JE-cSj" firstAttribute="leading" secondItem="whj-TD-wqc" secondAttribute="leading" constant="20" id="lRc-BH-ZQs"/>
                             <constraint firstItem="whj-TD-wqc" firstAttribute="trailing" secondItem="SlS-K3-COn" secondAttribute="trailing" constant="20" id="ly3-4r-PAb"/>
                             <constraint firstItem="whj-TD-wqc" firstAttribute="trailing" secondItem="awR-TJ-Wzk" secondAttribute="trailing" constant="20" id="uNX-pZ-Fuc"/>
