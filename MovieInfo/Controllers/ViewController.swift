@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     var dataManager = DataManager()
     
+    
     @IBOutlet weak var tableVIew: UITableView!
     
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
     
     @IBAction func addMovieDataBtn(_ sender: UIBarButtonItem) {
         dataManager.addMovieData(Movie(movieImage: UIImage(named: "spiderman2.png"), movieName: "새 영화", movieDescription: "내용을 입력해주세요."))
+        tableVIew.reloadData()
     }
     
     
@@ -62,8 +64,15 @@ extension ViewController:UITableViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail"{
             let detailVC = segue.destination as! DetailViewController
-            
+            let indexPath = sender as! IndexPath
+            detailVC.movieData = dataManager.getMovieData()[indexPath.row]
         }
     }
 }
 
+extension ViewController: MovieDelegate{
+    func update(index: Int, _ movie: Movie) {
+        dataManager.updateMovieData(index: index, movie)
+        tableVIew.reloadData()
+    }
+}
