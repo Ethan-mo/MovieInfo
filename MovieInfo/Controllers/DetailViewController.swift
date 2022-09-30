@@ -14,6 +14,8 @@ final class DetailViewController: UIViewController {
     var movieData: Movie?
     var memberNum: Int = 0
     
+    var delegate: MovieDelegate?
+    
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var detailNameLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
@@ -105,11 +107,17 @@ final class DetailViewController: UIViewController {
             detailNameTF.isHidden = true
             detailDescriptionTV.isHidden = true
             
+            movieData?.movieImage = detailImageView.image ?? UIImage(systemName: "person")
+            movieData?.movieName = detailNameTF.text ?? ""
+            movieData?.movieDescription = detailDescriptionTV.text ?? ""
+            
+            데이터불러오기()
+            
             let index = navigationController!.viewControllers.count - 2
             let vc = navigationController!.viewControllers[index] as! ViewController
             vc.dataManager.updateMovieData(index: memberNum, movieData!)
+            delegate?.update(index: memberNum, movieData!)
             detailImageView.isUserInteractionEnabled = false
-            
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

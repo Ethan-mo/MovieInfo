@@ -64,6 +64,7 @@ extension ViewController:UITableViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail"{
             let detailVC = segue.destination as! DetailViewController
+            detailVC.delegate = self
             let indexPath = sender as! IndexPath
             detailVC.movieData = dataManager.getMovieData()[indexPath.row]
         }
@@ -72,7 +73,6 @@ extension ViewController:UITableViewDelegate{
 
 extension ViewController: MovieDelegate{
     func update(index: Int, _ movie: Movie) {
-        dataManager.updateMovieData(index: index, movie)
         tableVIew.reloadData()
     }
 }
